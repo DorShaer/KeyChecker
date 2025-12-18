@@ -1,0 +1,8 @@
+# No external dependencies required
+# This script uses only Python standard library modules:
+# - argparse
+# - json
+# - sys
+# - urllib.request
+# - urllib.error
+# - urllib.parse
