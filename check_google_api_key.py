@@ -81,6 +81,22 @@ GOOGLE_APIS = [
         "cost_info": "$10 per 1000 requests"
     },
     {
+        "name": "Maps Roads API (Speed Limits)",
+        "url": "https://roads.googleapis.com/v1/speedLimits",
+        "params": {"path": "60.170880,24.942795|60.170879,24.942796"},
+        "paid": True,
+        "cost_info": "$20 per 1000 elements"
+    },
+    {
+        "name": "Geolocation API",
+        "url": "https://www.googleapis.com/geolocation/v1/geolocate",
+        "params": {},
+        "method": "POST",
+        "body": {"considerIp": True},
+        "paid": True,
+        "cost_info": "$5 per 1000 requests"
+    },
+    {
         "name": "Maps Timezone API",
         "url": "https://maps.googleapis.com/maps/api/timezone/json",
         "params": {"location": "39.6034810,-119.6822510", "timestamp": "1331161200"},
@@ -159,6 +175,15 @@ GOOGLE_APIS = [
         "cost_info": "Free with quota limits"
     },
     # Other APIs
+    {
+        "name": "Firebase Cloud Messaging (FCM)",
+        "url": "https://fcm.googleapis.com/fcm/send",
+        "params": {},
+        "method": "POST",
+        "body": {"registration_ids": ["test"]},
+        "paid": False,
+        "cost_info": "Free (but can be abused for spam)"
+    },
     {
         "name": "Custom Search API",
         "url": "https://www.googleapis.com/customsearch/v1",
