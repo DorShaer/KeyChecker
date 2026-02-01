@@ -285,18 +285,14 @@ def test_api(api_info: dict, api_key: str, verbose: bool = False) -> dict:
                     # HTTP-style error in JSON body - clearly denied
                     result["accessible"] = False
                     result["error"] = error_msg or "Access denied"
-                elif status == "REQUEST_DENIED" and is_denied:
-                    # REQUEST_DENIED with clear denial message
+                elif status == "REQUEST_DENIED":
+                    # REQUEST_DENIED always means the key cannot access this API
                     result["accessible"] = False
                     result["error"] = error_msg or "Request denied"
                 elif status in ("OVER_QUERY_LIMIT", "RESOURCE_EXHAUSTED"):
                     # Hit rate limits - but key HAS access
                     result["accessible"] = True
                     result["error"] = f"Rate limited (but key has access): {error_msg}"
-                elif status == "REQUEST_DENIED" and not is_denied:
-                    # REQUEST_DENIED but unclear why - could be temporary, mark accessible with warning
-                    result["accessible"] = True
-                    result["error"] = f"Possibly accessible (unclear denial): {error_msg}"
                 elif is_denied:
                     # Clear denial phrase in error message
                     result["accessible"] = False
